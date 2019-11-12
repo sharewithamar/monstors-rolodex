@@ -1,48 +1,18 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-/*
- function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Hello Amar Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-} */
 class App extends Component {
   constructor(){
     super();
     this.state ={
-      monsters: [
-        {
-          name :'Frankenstein',
-          id : 'asc1'
-        },
-        {
-          name : 'Draculla',
-          id : 'asc2'
-        },
-        {
-          name : 'Zombie',
-          id : 'asc3'
-        },
-      ]
+      monsters: []
    }
   }
+  componentDidMount()
+  {
+    fetch('https://jsonplaceholder.typicode.com/users').then( response => response.json()).then(data => this.setState({monsters: data}))
+  }
+
   render(){
     return (
     <div className="App">
